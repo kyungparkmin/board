@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  let title = req.body.title;
-  let content = req.body.content;
+  let title:string = req.body.title;
+  let content:string = req.body.content;
   let sql = "insert into content values(?, ?)";
 
   con.query(sql, [title, content], (error, results, rows) => {

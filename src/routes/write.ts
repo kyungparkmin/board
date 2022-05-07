@@ -7,13 +7,18 @@ router.get('/', (req, res) => {
   res.render('write')
 })
 
-router.post('/', (req, res) => {
+router.post('/post', (req, res) => {
   let title:string = req.body.title;
   let content:string = req.body.content;
-  let sql = "insert into content values(?, ?)";
+  let sql = "insert into content(C_title, C_content) values(?, ?)";
+  let params = [title, content];
 
-  con.query(sql, [title, content], (error, results, rows) => {
-
+  con.query(sql, params, (err, results, rows) => {
+    if(err){
+      console.error(err);
+    }else{
+      res.redirect('/');
+    }
   })
 })
 

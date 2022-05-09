@@ -5,23 +5,18 @@ import con from '../config/db';
 
 
 router.get('/', (req, res) => {
-  let sql = "SELECT * FROM content";
+  let sql = "SELECT * FROM content ORDER BY C_id desc";
   con.query(sql, (err, rows, fields) => {
     if(err){
       console.error(err);
     }else{
       //let title = req.body.C_title;
       let i;
-      let id: number[] = [];
-      let title: string[] = [];
-      let content:string[] = [];
+      let data:any = [];
       for( i = 0; i < rows.length; i++){
-        id.push(rows[i].C_id)
-        title.push(rows[i].C_title);
-        content.push(rows[i].C_content)
+          data.push(rows[i]);
       }
-      res.render('main', {id, title, content})
-      console.log(title, content)
+      res.render('main', {data})
     }
   })
 })

@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 router.post('/post', (req, res) => {
   let title:string = req.body.title;
   let content:string = req.body.content;
-  let sql = "insert into content(C_title, C_content) values(?, ?)";
+  let sql = "insert into post(P_title, P_content) values(?, ?)";
   let params = [title, content];
 
   con.query(sql, params, (err, results, rows) => {

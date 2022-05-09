@@ -1,5 +1,4 @@
 import mysql from 'mysql';
-import dotenv from 'dotenv';
 
 const con = mysql.createConnection({
   host : 'localhost',

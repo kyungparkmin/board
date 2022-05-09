@@ -7,7 +7,7 @@ const app = express();
 
 import mainRouter from './routes/main';
 import writeRouter from './routes/write';
-import contentRouter from './routes/content';
+import postRouter from './routes/post';
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 
 app.use('/', mainRouter);
 app.use('/write', writeRouter);
-app.use('/content', contentRouter);
+app.use('/post', postRouter);
 
 app.listen(3001, () => {
   console.log("listening on 3000");
